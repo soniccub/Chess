@@ -4,7 +4,7 @@ from tkinter import *
 class Board():
     def __init__(self, game):
 
-        self.square_size = [ self.WIDTH / self.SIZE[0], self.HEIGHT / self.SIZE[1]]
+        self.square_size = [ self.main.WIDTH / self.main.SIZE[0], self.main.HEIGHT / self.main.SIZE[1]]
         self.square_coords = []
         # so it takes up all of screen
 
@@ -17,18 +17,18 @@ class Board():
 
     def board_create(self):
 
-        for i in range(self.SIZE[0] * self.SIZE[1]):
+        for i in range(self.main.SIZE[0] * self.main.SIZE[1]):
             # uses total area
 
-            self.square_coords.append([(i % self.SIZE[0]) * self.square_size[0],
-                                       math.floor(i / self.SIZE[1]) * self.square_size[1]])
+            self.square_coords.append([(i % self.main.SIZE[0]) * self.square_size[0],
+                                       math.floor(i / self.main.SIZE[1]) * self.square_size[1]])
 
-            if not (i % self.SIZE[0]) * self.square_size[0] in self.line_coordsX:
+            if not (i % self.main.SIZE[0]) * self.square_size[0] in self.line_coordsX:
                 # % makes it move down the line then math.floor will bring it over one  when % brings it back up
-                self.line_coordsX.append((i % self.SIZE[0]) * self.square_size[0])
+                self.line_coordsX.append((i % self.main.SIZE[0]) * self.square_size[0])
 
-            if not math.floor(i / self.SIZE[1]) * self.square_size[1] in self.line_coordsY:
-                self.line_coordsY.append(math.floor(i / self.SIZE[1]) * self.square_size[1])
+            if not math.floor(i / self.main.SIZE[1]) * self.square_size[1] in self.line_coordsY:
+                self.line_coordsY.append(math.floor(i / self.main.SIZE[1]) * self.square_size[1])
 
                 # draws lines that will form squares/rectangles
 

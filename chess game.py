@@ -16,7 +16,7 @@ class Main:
         self.HEIGHT = 500
         # Height and width of canvas
         self.SIZE = [8, 8]
-        self.GAME = "normal"
+        self.game = "normal"
         self.main_window = Tk()
         self.canvas = Canvas(self.main_window, width=self.WIDTH, height=self.HEIGHT)
         self.canvas.pack()
@@ -25,29 +25,27 @@ class Main:
 
         self.start()
         self.update()
+        self.board = Board(self.game)
+
     def start(self):
-
-
-
 
         self.canvas.pack()
         self.main_window.mainloop()
 
-
     def update(self):
         self.canvas.delete(all)
 
-        global main_window
-        self.board.draw_squares()
 
-        global timer
+
+
+
         timer = threading.Timer(3, self.update)
         timer.start()
-        global piece_list
-        for i in piece_list:
+
+        for i in self.piece_list:
             i.label.destroy()
             i.draw()
-
+        self.board.draw_squares()
     def piece_creation(self):
 
         knight_bl_1 = Knight(self,"black", 0)
